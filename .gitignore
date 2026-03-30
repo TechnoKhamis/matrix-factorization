@@ -1,2 +1,5 @@
-venv
-data
+venv/
+data/
+processed/
+reports/
+*.npy
