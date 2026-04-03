@@ -14,20 +14,15 @@ import os
 # In[2]:
 
 
-try:
-    svd_data    = np.load('../reports/svd_predictions.npy')
-    pmf_data    = np.load('../reports/pmf_predictions.npy')
-    
-    user_index  = joblib.load('../processed/user_index.pkl')
-    movie_index = joblib.load('../processed/movie_index.pkl')
-    
-    movies_pd = pd.read_csv('../data/movies.dat', sep='::', encoding='latin-1',engine='python',names=["MovieID","Title","Genres"])
-    
-    test_data = pd.read_csv('../processed/test_data.csv')
-    train_data = pd.read_csv('../processed/train_data.csv')
+BASE = os.path.dirname(os.path.abspath(__file__))
 
-except Exception as e:
-    print(f"Failed to load data: {e}")
+svd_data    = np.load(os.path.join(BASE, '../reports/svd_predictions.npy'))
+pmf_data    = np.load(os.path.join(BASE, '../reports/pmf_predictions.npy'))
+user_index  = joblib.load(os.path.join(BASE, '../processed/user_index.pkl'))
+movie_index = joblib.load(os.path.join(BASE, '../processed/movie_index.pkl'))
+movies_pd   = pd.read_csv(os.path.join(BASE, '../data/movies.dat'), sep='::', encoding='latin-1', engine='python', names=["MovieID","Title","Genres"])
+test_data   = pd.read_csv(os.path.join(BASE, '../processed/test_data.csv'))
+train_data  = pd.read_csv(os.path.join(BASE, '../processed/train_data.csv'))
 
 
 # In[3]:
